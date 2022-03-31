@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../hooks/useProducts';
 import { addToLocalStorageDB, getLocalStoredCart } from '../../utilities/localStorageDB';
 import Cart from '../Cart/Cart';
 import Product from '../product/Product';
@@ -6,12 +7,7 @@ import './Shop.css';
 
 const Shop = () => {
     // Load data 
-    const [products, setProducts] = useState([])
-    useEffect(() => {
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, []);
+    const [products, setProducts] = useProducts();
 
     // add to Cart list
     const [cart, setCart] = useState([]);
