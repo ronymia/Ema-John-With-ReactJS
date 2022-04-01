@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
-import { addToLocalStorageDB, getLocalStoredCart } from '../../utilities/localStorageDB';
+import { addToLocalStorageDB } from '../../utilities/localStorageDB';
 import Cart from '../Cart/Cart';
 import Product from '../product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    // Load data 
+    // Load data && import useProduct from hooks
     const [products, setProducts] = useProducts();
 
-    // add to Cart list
-    const [cart, setCart] = useState([]);
-
-    // get data from local storage DB
-    useEffect(() => {
-        const storedCart = getLocalStoredCart();
-        const savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(product => product.id === id);
-            if (addedProduct) {
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
-            }
-        }
-        setCart(savedCart);
-    }, [products]);
+    // add to Cart list and  get data from local storage DB also useCart import form hooks
+    const [cart, setCart] = useCart(products);
 
     const handleAddToCart = (selectedProduct) => {
         console.log(selectedProduct);

@@ -17,8 +17,8 @@ const useCart = (products) => {
                 savedCart.push(addedProduct);
             }
         }
-
         setCart(savedCart);
+
     }, [products]);
 
     return [cart, setCart];
