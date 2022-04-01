@@ -15,10 +15,34 @@
 
 .reviewitem-details p {
     margin: 0;
+    color: #1C2B35;
+}
+
+.orange-color {
+    color: #FF9900;
 }
 
 .reviewitem-details-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.delete-item {
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: rgba(235, 87, 87, 0.3);
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.delete-icon {
+    color: #EB5757;
+    font-size: 27px;
 }
