@@ -23,8 +23,7 @@ const Cart = (props) => {
             <p>Total Shipping Charge : ${shipping}</p>
             <p>Tex : ${tex}</p>
             <h4>Grand Total : ${grandTotal}</h4>
-            <button className="clear-btn">Clear Cart</button> <br />
-            <button className="review-btn">Review Order</button>
+            {props.children}
         </div>
     );
 };

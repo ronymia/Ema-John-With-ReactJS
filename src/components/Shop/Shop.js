@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
 import { addToLocalStorageDB } from '../../utilities/localStorageDB';
@@ -43,7 +44,14 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container-bg">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+
+                    <button className="clear-btn">Clear Cart</button>
+
+                    <Link to='/orders'>
+                        <button className="review-btn">Review Order</button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
