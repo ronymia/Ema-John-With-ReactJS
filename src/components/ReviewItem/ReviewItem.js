@@ -5,7 +5,8 @@ import './ReviewItms.css';
 
 const ReviewItem = (props) => {
     // Destructuring 
-    const { name, price, img, shipping, quantity } = props.product;
+    const { handleRemoveItem, product } = props;
+    const { name, price, img, shipping, quantity } = product;
 
     return (
         <div className='reviewItem'>
@@ -20,7 +21,7 @@ const ReviewItem = (props) => {
                     <p>Quantity : <small className="orange-color">{quantity}</small></p>
                 </div>
                 <div className="delete-item">
-                    <button className='delete-btn'>
+                    <button onClick={() => handleRemoveItem(product)} className='delete-btn'>
                         <FontAwesomeIcon className='delete-icon' icon={faTrashAlt}></FontAwesomeIcon>
                     </button>
                 </div>
