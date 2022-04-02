@@ -23,7 +23,6 @@ const addToLocalStorageDB = (id) => {
 // Get Data From Local STorage database
 const getLocalStoredCart = () => {
     let shoppingCart = {};
-
     const storedCart = localStorage.getItem('shopping-cart');
     if (storedCart) {
         shoppingCart = JSON.parse(storedCart);
@@ -40,7 +39,6 @@ const removeFormLocalStorageDB = id => {
             localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
         }
     }
-    return storedCart;
 }
 
 export {
