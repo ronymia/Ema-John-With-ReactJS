@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
 import { addToLocalStorageDB } from '../../utilities/localStorageDB';
@@ -32,6 +31,8 @@ const Shop = () => {
         addToLocalStorageDB(selectedProduct.id);
     };
 
+    const navigate = useNavigate()
+
     return (
         <div className="shop-container">
             <div className="products-container">
@@ -46,11 +47,7 @@ const Shop = () => {
             <div className="cart-container-bg">
                 <Cart cart={cart}>
 
-                    <button className="clear-btn">Clear Cart</button>
-
-                    <Link to='/orders'>
-                        <button className="review-btn">Review Order</button>
-                    </Link>
+                    <button onClick={() => { navigate('/orders') }} className="review-btn">Review Order</button>
                 </Cart>
             </div>
         </div>

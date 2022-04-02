@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
 import { removeFormLocalStorageDB } from '../../utilities/localStorageDB';
@@ -17,8 +17,10 @@ const Orders = () => {
         setCart(rest);
 
         // try to remove items from Local Storage db but fail
-        // removeFormLocalStorageDB(selectedItem.id);
+        removeFormLocalStorageDB(selectedItem.id);
     }
+
+    const navigate = useNavigate()
 
     return (
         <div className='shop-container'>
@@ -35,11 +37,7 @@ const Orders = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
 
-                        <button className="clear-btn">Clear Cart</button>
-
-                        <Link to='/inventory'>
-                            <button className="review-btn">Procced to Check</button>
-                        </Link>
+                        <button onClick={() => navigate('/inventory')} className="review-btn">Procced to Check</button>
                     </Cart>
                 </div>
 

@@ -34,7 +34,7 @@ const removeFormLocalStorageDB = id => {
     const storedCart = localStorage.getItem('shopping-cart');
     if (storedCart) {
         const shoppingCart = JSON.parse(storedCart);
-        for (id in shoppingCart) {
+        if (id in shoppingCart) {
             delete shoppingCart[id];
             localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
         }
