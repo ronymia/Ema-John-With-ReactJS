@@ -16,7 +16,7 @@ const Orders = () => {
         const rest = cart.filter(product => product.id !== selectedItem.id);
         setCart(rest);
 
-        // try to remove items from Local Storage db but fail
+        //remove items from Local Storage db
         removeFormLocalStorageDB(selectedItem.id);
     }
 
