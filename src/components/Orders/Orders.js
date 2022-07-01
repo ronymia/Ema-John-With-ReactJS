@@ -7,17 +7,16 @@ import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Orders = () => {
-    // useProduct & use Cart Import from hooks
     const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
 
     // handleRemove Item from Shopping cart
     const handleRemoveItem = (selectedItem) => {
-        const rest = cart.filter(product => product.id !== selectedItem.id);
+        const rest = cart.filter(product => product._id !== selectedItem._id);
         setCart(rest);
 
         //remove items from Local Storage db
-        removeFormLocalStorageDB(selectedItem.id);
+        removeFormLocalStorageDB(selectedItem._id);
     }
 
     const navigate = useNavigate()
@@ -27,7 +26,7 @@ const Orders = () => {
             <div className="reviewitem-container">
                 {
                     cart.map(product => <ReviewItem
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         handleRemoveItem={handleRemoveItem}
                     ></ReviewItem>)
@@ -37,7 +36,7 @@ const Orders = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
 
-                        <button onClick={() => navigate('/inventory')} className="review-btn">Procced to Check</button>
+                        <button onClick={() => navigate('/shipment')} className="review-btn">Proceed to Shipping</button>
                     </Cart>
                 </div>
 
